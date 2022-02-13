@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\Notification;
 use App\Events\NotificationSent;
 use App\Models\Task;
+use App\Gamify\Points\TaskCompleted;
 use Livewire\Component;
 use Livewire\Event;
 
@@ -203,6 +204,7 @@ class Tasks extends Component
             Task::find($id)->update(['status' => 'Completed']);
             $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'The task is now in progress!']);
 
+            auth()->user()->givePoint(new TaskCompleted(Task::find($id)));
             event(new NotificationSent(new Notification, ['title' => 'Task status changed', 'description' => 'The task is now Completed']));
         }
     }
