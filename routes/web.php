@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AirdropController;
 use App\Http\Controllers\BadgesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
@@ -46,6 +47,10 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         // News routes
         Route::get('news', [NewsController::class, 'index'])
                     ->name('news');
+
+        // Airdrop routes
+        Route::get('airdrop', [AirdropController::class, 'index'])
+                    ->name('airdrop');
 
     });
 });

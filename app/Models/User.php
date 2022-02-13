@@ -229,4 +229,11 @@ class User extends Authenticatable
         auth()->user()->givePoint($shiftPoints);
 
     }
+
+    public function availablePayout()
+    {
+        $points = auth()->user()->getPoints();
+        // If airdrop is less than total points
+        return auth()->user()->getPoints() - auth()->user()->airdrop;
+    }
 }
