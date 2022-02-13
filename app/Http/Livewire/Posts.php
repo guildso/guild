@@ -37,6 +37,7 @@ class Posts extends Component
         if(auth()->user()->id == $post->user_id) {
             $post->delete();
             $this->dispatchBrowserEvent('notification', ['type' => 'warning', 'message' => 'You have deleted the post!']);
+            auth()->user()->undoPoint(new \App\Gamify\Points\PostCreated($post));
         } else {
             $this->dispatchBrowserEvent('notification', ['type' => 'error', 'message' => 'You do not have permissions to delete this post!']);
         }

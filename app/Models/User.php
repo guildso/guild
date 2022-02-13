@@ -13,7 +13,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
-use QCod\Gamify\Gamify;
+use QCod\Gamify\HasReputations;
 
 class User extends Authenticatable
 {
@@ -23,7 +23,7 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use Gamify;
+    use HasReputations;
 
     /**
      * The attributes that are mass assignable.
@@ -137,6 +137,11 @@ class User extends Authenticatable
         $this->badges()->detach($badge);
     }
 
+    public function syncBadges()
+    {
+        // sybc badges
+    }
+
     public function completedTasks(){
         return $this->tasks()->where('status', 'Completed')->get();
     }
@@ -219,5 +224,9 @@ class User extends Authenticatable
         $log->team_id = $this->currentTeam->id;
         $log->user_id = auth()->user()->id;
         $log->save();
+
+        $shiftPoints = new \App\Gamify\Points\ShiftCompleted($log);
+        auth()->user()->givePoint($shiftPoints);
+
     }
 }
