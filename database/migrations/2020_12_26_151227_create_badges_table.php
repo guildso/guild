@@ -23,6 +23,8 @@ class CreateBadgesTable extends Migration
             $table->string('award_message')->nullable();
             $table->string('requirement_class')->nullable();
             $table->string('requirement_value')->nullable();
+            $table->string('icon')->nullable();
+            $table->tinyInteger('level')->default(config('gamify.badge_default_level', 1));
             $table->timestamps();
         });
     }

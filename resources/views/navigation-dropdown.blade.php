@@ -23,6 +23,10 @@
                     🥇 <span class="pl-2 text-sm">Badges</span>
                 </a>
 
+                <a href="{{ route('airdrop') }}" class="@if(request()->routeIs('airdrop')){{ 'text-gray-800' }}@else{{ 'text-gray-400' }}@endif flex items-center pl-1 text-base font-semibold">
+                    💸 <span class="pl-2 text-sm">AirDrop</span>
+                </a>
+
                 @if(auth()->user()->hasTeamRole(auth()->user()->currentTeam, 'manager'))
                     <a href="{{ route('news') }}" class="@if(request()->routeIs('news')){{ 'text-gray-800' }}@else{{ 'text-gray-400' }}@endif flex items-center pl-1 text-base font-semibold">
                         📰 <span class="pl-2 text-sm">News</span>

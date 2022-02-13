@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\Notification;
 use App\Events\NotificationSent;
 use App\Models\Task;
+use App\Gamify\Points\TaskCompleted;
 use Livewire\Component;
 use Livewire\Event;
 
@@ -155,7 +156,8 @@ class Tasks extends Component
     public function delete($id)
     {
         if (auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'delete')) {
-            $task = Task::find($id);
+            $task = Task::with('user')->find($id);
+            $task->user->undoPoint(new TaskCompleted($task));
             $task->delete();
             $this->dispatchBrowserEvent('notification', ['type' => 'warning', 'message' => 'You have deleted the task!']);
 
@@ -201,7 +203,11 @@ class Tasks extends Component
     {
         if (auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'read')) {
             Task::find($id)->update(['status' => 'Completed']);
-            $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'The task is now in progress!']);
+            
+            $taskCompleted = new TaskCompleted(Task::find($id));
+            auth()->user()->givePoint($taskCompleted);
+
+            $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'You have earned ' . $taskCompleted->points . ' points for completing this task!']);
 
             event(new NotificationSent(new Notification, ['title' => 'Task status changed', 'description' => 'The task is now Completed']));
         }

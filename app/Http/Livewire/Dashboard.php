@@ -38,6 +38,9 @@ class Dashboard extends Component
             $post->body = $this->body;
             $post->save();
 
+            $PostCreated = new \App\Gamify\Points\PostCreated($post);
+            auth()->user()->givePoint($PostCreated);
+
             $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Post Created Successfully!']);
 
             $this->resetInputFields();
