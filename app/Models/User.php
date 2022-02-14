@@ -121,7 +121,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post');
     }
 
-    public function badges(){
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function airdrops()
+    {
+        return $this->hasMany('App\Models\Airdrop');
+    }
+
+    public function badges()
+    {
     	return $this->belongsToMany('App\Models\Badge');
     }
 

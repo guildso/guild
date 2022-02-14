@@ -52,6 +52,7 @@ class JetstreamServiceProvider extends ServiceProvider
             'read',
             'update',
             'delete',
+            'airdrop',
         ])->description(__('Manager users can perform any action.'));
 
         Jetstream::role('member', __('Member'), [
