@@ -12,7 +12,7 @@
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Connect your Phantom wallet and request a payout.</p>
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Total earned points: <span class="font-black">{{ auth()->user()->getPoints() }}</span></p>
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Available payout: <span class="font-black">{{ auth()->user()->availablePayout() }}</span></p>
-                                
+                                <p class="mt-3 mb-4 text-lg text-gray-700">Total earnings: <span class="font-black">{{ auth()->user()->airdrop }}</span></p>
                                 <div>
                                     @if (isset($solWallet))
                                         <div class="d-flex justify-content-center mt-5">
@@ -33,7 +33,13 @@
 
                                 @if (isset($solWallet))
                                     <div class="d-flex justify-content-center mt-5">
-                                        <button id="login-button" onclick="request()" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">Request airdrop</button>
+                                        @if (auth()->user()->airdrops()->where('status', 'requested')->exists())
+                                            <button class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 cursor-not-allowed" disabled>Airdrop requested</button>
+                                        @else
+                                            @if(auth()->user()->availablePayout() > 0)
+                                                <button wire:loading.remove wire:target="request" wire:click="request" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">Request airdrop</button>
+                                            @endif
+                                        @endif
                                     </div>
                                 @else
                                     <div class="d-flex justify-content-center mt-5">
@@ -45,6 +51,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            @livewire('airdrop-list')
         </div>
     </div>
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
