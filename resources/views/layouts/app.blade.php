@@ -47,7 +47,7 @@
                     <div class="p-5">
                         <h2 class="text-xl">Welcome to Your Dashboard</h2>
                         <p class="py-4 text-lg text-gray-500">This is your guild dashboard. On your dashboard you can post a quick message in your company feed, start your shift, and view your guild status.</p>
-                        <p class="py-2 pb-4 text-lg text-gray-500" target="_blank">Next, you may want to invite a few more members to your guild by telling them to signup at <a href="{{ url('register') }}" class="text-green-400 underline">{{ url('register') }}</a></p>
+                        <p class="py-2 pb-4 text-lg text-gray-500" target="_blank">Next, you may want to invite a few more members to your guild by telling them to signup at <a href="{{ url('register') }}" class="text-purple-500 underline">{{ url('register') }}</a></p>
                         <button @click="show=false" class="inline-flex items-center justify-center flex-shrink-0 w-auto w-full px-4 py-4 mt-4 text-lg font-semibold tracking-wide text-center text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">Awesome! Let's go.</button>
 
                     </div>
