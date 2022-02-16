@@ -8,7 +8,7 @@
 
                         <div class="overflow-hidden shadow sm:rounded-md">
                             <div class="px-4 py-5 bg-white sm:p-6">
-                                <h1 class="text-6xl font-black">Solana Blockcahin</h1>
+                                <h1 class="text-6xl font-black">Solana Blockchain</h1>
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Connect your Phantom wallet and request a payout.</p>
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Total earned points: <span class="font-black">{{ auth()->user()->getPoints() }}</span></p>
                                 <p class="mt-3 mb-4 text-lg text-gray-700">Available payout: <span class="font-black">{{ auth()->user()->availablePayout() }}</span></p>

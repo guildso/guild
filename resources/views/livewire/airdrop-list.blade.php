@@ -45,6 +45,11 @@
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ ucfirst($airdrop->status) }}
+                                        @if ($airdrop->transaction)
+                                            <p class="text-xs text-gray-300">
+                                                <a href="https://solscan.io/tx/{{ $airdrop->transaction }}" target="_blank">Transaction</a>
+                                            </p>
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $airdrop->wallet }}
@@ -53,11 +58,20 @@
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $airdrop->user->name }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            <button wire:click="approve({{ $airdrop->id }})"
-                                                class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray border border-transparent rounded-md disabled:opacity-25">
-                                                Approve
-                                        </td>
+                                        @if ($airdrop->status == 'requested')
+                                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                <button wire:click="approve({{ $airdrop->id }})"
+                                                    class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray border border-transparent rounded-md disabled:opacity-25">
+                                                    Approve
+                                                </button>
+                                            </td>
+                                        @else
+                                            <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                                <button class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray border border-transparent rounded-md disabled:opacity-25" disabled>
+                                                    Approved
+                                                </button>
+                                            </td>
+                                        @endif
                                     @endif
                                 </tr>
                             @endforeach
