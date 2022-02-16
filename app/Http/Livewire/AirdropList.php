@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Airdrop;
+use Illuminate\Support\Facades\Artisan;
+use Symfony\Component\Process\Process;
 
 class AirdropList extends Component
 {
@@ -25,16 +27,32 @@ class AirdropList extends Component
 
     public function approve($id)
     {
+
+        $airdrop = Airdrop::find($id);
+
         if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'airdrop')){
-            $airdrop = Airdrop::find($id);
-            $airdrop->status = 'approved';
-            $airdrop->save();
+            try {
+                $airdrop = Airdrop::find($id);
+                $airdrop->status = 'approved';
 
-            $airdrop->user->airdrop += $airdrop->amount;
-            $airdrop->user->save();
+                Artisan::call('solana:approve', [
+                    'token' => env('SOLANA_TOKEN_ADDRESS'),
+                    'recipient' => $airdrop->wallet,
+                    'amount' => $airdrop->amount,
+                    'id' => $id,
+                ]);
 
-            $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop approved successfully!']);
-            return;
+                $airdrop->user->airdrop += $airdrop->amount;
+
+                //$airdrop->transaction = $txHash;
+                $airdrop->save();
+                $airdrop->user->save();
+
+                $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop approved successfully!']);
+                return;
+            } catch (\Exception $e) {
+                throw $e;
+            }
         } else {
             $this->dispatchBrowserEvent('notification', ['type' => 'warning', 'message' => 'You do not have permission to approve airdrops!']);
             return;
