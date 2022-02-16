@@ -15,7 +15,7 @@
 
     </head>
     <body>
-        <div class="relative flex overflow-hidden bg-black">
+        <div class="relative flex overflow-hidden min-h-screen bg-black">
             
             <div class="container relative z-50 flex-shrink-0 w-full font-sans antialiased text-gray-900 md:max-w-xl">
                 {{ $slot }}

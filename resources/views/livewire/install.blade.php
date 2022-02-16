@@ -59,7 +59,7 @@
 
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
             <h1 class="text-4xl text-gray-100 font-bold">Create Your <span class="text-purple-500">Account</span></h1>
-            <p class="text-lg text-gray-500">Next, create your account. This will give you access to your guild dashboard.</p>
+            <p class="text-lg text-gray-300">Next, create your account. This will give you access to your guild dashboard.</p>
 
             <div class="w-full">
                 <x-jet-label for="name" value="{{ __('Name') }}" />

@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo"></x-slot>
 
-        <a href="/" class="inline-block pb-5 text-xl font-black text-black uppercase">Login to your account</a>
+        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-100 uppercase">Login to your account</a>
 
         <x-jet-validation-errors class="mb-4" />
 
@@ -34,7 +34,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="text-sm text-gray-600 underline hover:text-gray-400" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif

@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo"></x-slot>
 
-        <a href="/" class="inline-block pb-5 text-xl font-black text-black uppercase">Signup for an account</a>
+        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-100 uppercase">Signup for an account</a>
 
         <x-jet-validation-errors class="mb-4" />
 

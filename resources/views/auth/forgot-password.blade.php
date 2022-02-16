@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo"></x-slot>
 
-        <a href="/" class="inline-block pb-5 text-xl font-black text-black uppercase">Forgot Password</a>
+        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-100 uppercase">Forgot Password</a>
 
         <div class="mb-4 text-sm text-gray-600">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
