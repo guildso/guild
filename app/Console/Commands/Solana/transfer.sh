@@ -8,11 +8,12 @@
 ##
 # Prepare the arguments for the transfer
 ##
-token_address=$1
-recipient=$2
-amount=$3
-id=$4
-storage=$5
+token_address=${SOLANA_TOKEN_ADDRESS}
+recipient=${SOLANA_RECIPIENT}
+amount=${SOLANA_AMOUNT}
+id=${SOLANA_ID}
+storage=${STORAGE_PATH}
+
 transfer_log=${storage}/solana/airdrop-${id}.log
 
 ##

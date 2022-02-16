@@ -38,7 +38,17 @@ class Solana extends Command
      */
     public function handle()
     {
-        Process::fromShellCommandline('bash ' . base_path().'/app/Console/Commands/Solana/transfer.sh ' . $this->argument('token') . ' ' . $this->argument('recipient') . ' ' . $this->argument('amount') . ' ' . $this->argument('id') . ' ' . storage_path() )->start();
+
+        $proc = Process::fromShellCommandline('bash ' . base_path().'/app/Console/Commands/Solana/transfer.sh', null, 
+            [
+                'SOLANA_TOKEN_ADDRESS' => $this->argument('token'),
+                'SOLANA_RECIPIENT' => $this->argument('recipient'),
+                'SOLANA_AMOUNT' => $this->argument('amount'),
+                'SOLANA_ID' => $this->argument('id'),
+                'STORAGE_PATH' => storage_path(),
+            ]
+        );
+        $proc->start();
         return $this->info('Transfer approved');
     }
 }
