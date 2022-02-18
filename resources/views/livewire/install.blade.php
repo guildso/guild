@@ -1,13 +1,7 @@
 <div  x-data="{ step: @entangle('step') }">
 
     <section x-show="step==0"
-        x-transition:enter="transition ease-in duration-500"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-out duration-300"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="flex flex-col justify-center h-screen"
+        class="flex flex-col justify-center h-full"
         x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
             <h1 class="text-4xl text-gray-100 font-bold">Welcome to <span class="text-purple-500">Guild</span></h1>
@@ -17,13 +11,7 @@
     </section>
 
     <section x-show="step==1"
-        x-transition:enter="transition ease-in duration-500"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-out duration-300"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="flex flex-col justify-center h-screen" x-cloak>
+        class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
             <h1 class="text-4xl text-gray-100 font-bold">About Your <span class="text-purple-500">Company</span></h1>
             <p class="text-lg text-gray-300">First, enter a little information about your awesome company.</p>
@@ -48,13 +36,7 @@
     </section>
 
     <section x-show="step==2"
-        x-transition:enter="transition ease-in duration-500"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-out duration-300"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="flex flex-col justify-center h-screen"
+        class="flex flex-col justify-center h-full"
         x-cloak>
 
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
@@ -93,13 +75,7 @@
     </section>
 
     <section x-show="step==3"
-        x-transition:enter="transition ease-in duration-500"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-out duration-300"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="flex flex-col justify-center h-screen" x-cloak>
+        class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
             <h1 class="text-4xl text-gray-100 font-bold">Finsh Your <span class="text-purple-500">Setup</span></h1>
             <p class="text-lg text-gray-300">Awesome 🙌, click on finish to complete the install and login to your dashboard.</p>
