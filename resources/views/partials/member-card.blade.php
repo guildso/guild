@@ -1,4 +1,4 @@
-<li class="relative col-span-1 overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg shadow-sm">
+<li class="relative col-span-1 overflow-hidden border-t border-gray-100 dark:border-gray-800">
     <div class="absolute top-0 left-0 w-2 h-full @if($member->isOnShift()){{ 'bg-green-400' }}@else{{ 'bg-gray-200 dark:bg-gray-700' }}@endif"></div>
     <div class="flex items-center justify-between w-full p-6 space-x-6">
         <img class="flex-shrink-0 w-12 h-12 bg-gray-300 rounded-full" src="{{ $member->profile_photo_url }}" alt="">

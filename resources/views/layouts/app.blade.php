@@ -26,7 +26,7 @@
 
                 <!-- Page Content -->
                 <main class="w-full">
-                    <div class="w-full h-16 text-gray-700 border-b border-gray-100 dark:border-gray-800 dark:text-white text-lg font-bold flex items-center px-4">
+                    <div class="w-full h-16 text-gray-700 border-b border-gray-100 dark:border-gray-800 dark:text-white text-lg font-bold flex items-center px-5">
                         <span>{{ config('title.' . request()->path()) }}</span>
                     </div>
                     {{ $slot }}
