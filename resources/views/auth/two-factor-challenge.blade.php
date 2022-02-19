@@ -3,7 +3,7 @@
 
         <x-slot name="logo"></x-slot>
 
-        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-100 uppercase">2FA Authentication</a>
+        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-700 dark:text-gray-100 uppercase">2FA Authentication</a>
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">

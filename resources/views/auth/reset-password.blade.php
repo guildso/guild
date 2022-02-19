@@ -3,7 +3,7 @@
 
         <x-slot name="logo"></x-slot>
 
-        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-100 uppercase">Reset Password</a>
+        <a href="/" class="inline-block pb-5 text-xl font-black text-gray-700 dark:text-gray-100 uppercase">Reset Password</a>
 
         <x-jet-validation-errors class="mb-4" />
 

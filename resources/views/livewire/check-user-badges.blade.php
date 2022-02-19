@@ -48,7 +48,7 @@
                     </div>
                     <div class="mt-5 sm:mt-6">
                         <button @click="open = false" type="button"
-                            class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-purple-500 border border-transparent rounded-md hover:bg-green-500 active:bg-green-500 focus:outline-none focus:border-green-500 focus:shadow-outline-green disabled:opacity-25">
+                            class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-500 focus:shadow-outline-green disabled:opacity-25">
                             Awesome!
                         </button>
                     </div>

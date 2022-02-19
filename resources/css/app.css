@@ -3,5 +3,5 @@
 @import 'tailwindcss/utilities';
 
 .form-input{
-    @apply block w-full mt-1 border-gray-900 rounded-md shadow-sm text-white focus:border-purple-900 focus:ring focus:ring-purple-500 focus:ring-opacity-50;
+    @apply block w-full mt-1 dark:border-gray-900 rounded-md shadow-sm dark:text-white focus:border-green-200 dark:focus:border-green-900 focus:ring focus:ring-green-500 focus:ring-opacity-50;
 }

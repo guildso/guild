@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-        <div class="max-w-4xl py-10 sm:px-6">
+        <div class="max-w-4xl">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
 

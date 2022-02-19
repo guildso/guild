@@ -1,4 +1,5 @@
 module.exports = {
+    darkMode: 'class',
     purge: [
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
@@ -7,20 +8,6 @@ module.exports = {
 
     theme: {
         extend: {
-            colors: {
-                purple : {
-                    '50': '#FEFDFF',
-                    '100': '#F2E8FF',
-                    '200': '#DCBFFF',
-                    '300': '#C597FF',
-                    '400': '#AF6EFF',
-                    '500': '#9845FF',
-                    '600': '#790DFF',
-                    '700': '#5F00D4',
-                    '800': '#45009C',
-                    '900': '#2C0064'
-                  },
-            }
         },
     },
 

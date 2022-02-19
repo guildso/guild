@@ -4,16 +4,16 @@
         class="flex flex-col justify-center h-full"
         x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Welcome to <span class="text-purple-500">Guild</span></h1>
+            <h1 class="text-4xl text-gray-100 font-bold">Welcome to <span class="text-green-500">Guild</span></h1>
             <p class="text-lg text-gray-300">Let's configure a few things and get your guild setup. This will only take 30 seconds.</p>
-            <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 pl-8 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-purple-600 border border-transparent rounded-md cursor-pointer hover:bg-purple-500 active:bg-purple-700 focus:outline-none focus:border-purple-600 focus:shadow-outline-purple disabled:opacity-25"><span class="mr-2 -ml-4">🚀</span> Let's Do This</div>
+            <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 pl-8 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md cursor-pointer hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green disabled:opacity-25"><span class="mr-2 -ml-4">🚀</span> Let's Do This</div>
         </div>
     </section>
 
     <section x-show="step==1"
         class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">About Your <span class="text-purple-500">Company</span></h1>
+            <h1 class="text-4xl text-gray-100 font-bold">About Your <span class="text-green-500">Company</span></h1>
             <p class="text-lg text-gray-300">First, enter a little information about your awesome company.</p>
 
 
@@ -30,7 +30,7 @@
 
             <div class="flex space-x-4">
                 <div @click="step--" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-gray-200 uppercase transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-600 border border-transparent rounded-md cursor-pointer">Previous</div>
-                <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-purple-600 border border-transparent rounded-md cursor-pointer hover:bg-purple-500 active:bg-purple-700 focus:outline-none focus:border-purple-600 focus:shadow-outline-purple disabled:opacity-25">Next Step</div>
+                <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md cursor-pointer hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green disabled:opacity-25">Next Step</div>
             </div>
         </div>
     </section>
@@ -40,7 +40,7 @@
         x-cloak>
 
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Create Your <span class="text-purple-500">Account</span></h1>
+            <h1 class="text-4xl text-gray-100 font-bold">Create Your <span class="text-green-500">Account</span></h1>
             <p class="text-lg text-gray-300">Next, create your account. This will give you access to your guild dashboard.</p>
 
             <div class="w-full">
@@ -69,7 +69,7 @@
 
             <div class="flex space-x-4">
                 <div @click="step--" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-gray-200 uppercase transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-600 border border-transparent rounded-md cursor-pointer">Previous</div>
-                <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-purple-600 border border-transparent rounded-md cursor-pointer hover:bg-purple-500 active:bg-purple-700 focus:outline-none focus:border-purple-600 focus:shadow-outline-purple disabled:opacity-25">Next Step</div>
+                <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md cursor-pointer hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green disabled:opacity-25">Next Step</div>
             </div>
         </div>
     </section>
@@ -77,21 +77,22 @@
     <section x-show="step==3"
         class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Finsh Your <span class="text-purple-500">Setup</span></h1>
+            <h1 class="text-4xl text-gray-100 font-bold">Finsh Your <span class="text-green-500">Setup</span></h1>
             <p class="text-lg text-gray-300">Awesome 🙌, click on finish to complete the install and login to your dashboard.</p>
             <div class="flex space-x-4">
                 <div @click="step--" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-gray-200 uppercase transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-600 border border-transparent rounded-md cursor-pointer">Previous</div>
-                <div wire:click="finish" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-purple-600 border border-transparent rounded-md cursor-pointer hover:bg-purple-500 active:bg-purple-700 focus:outline-none focus:border-purple-600 focus:shadow-outline-purple disabled:opacity-25">Finish</div>
+                <div wire:click="finish" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md cursor-pointer hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green
+                 disabled:opacity-25">Finish</div>
             </div>
         </div>
     </section>
 
         <div class="fixed bottom-0 z-50 flex items-center justify-between w-full max-w-sm mx-auto mb-10 ml-1">
-            <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
-            <div class="absolute w-full h-1 bg-purple-500 rounded-full top-1/2 -mt-0.5"></div>
-            <div :class="{ 'bg-purple-500 border-transparent' : step >= 1, 'border-purple-500 bg-gray-900' : step < 1 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
-            <div :class="{ 'bg-purple-500 border-transparent' : step >= 2, 'border-purple-500 bg-gray-900' : step < 2 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
-            <div :class="{ 'bg-purple-500 border-transparent' : step >= 3, 'border-purple-500 bg-gray-900' : step < 3 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
+            <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+            <div class="absolute w-full h-1 bg-green-500 rounded-full top-1/2 -mt-0.5"></div>
+            <div :class="{ 'bg-green-500 border-transparent' : step >= 1, 'border-green-500 bg-gray-900' : step < 1 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
+            <div :class="{ 'bg-green-500 border-transparent' : step >= 2, 'border-green-500 bg-gray-900' : step < 2 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
+            <div :class="{ 'bg-green-500 border-transparent' : step >= 3, 'border-green-500 bg-gray-900' : step < 3 }" class="relative flex items-center justify-center w-4 h-4 border-4 rounded-full"></div>
         </div>
 
 </div>

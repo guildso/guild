@@ -15,24 +15,26 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        @include('partials.dark-mode-toggle')
     </head>
     <body class="font-sans antialiased" id="app">
-        <div class="min-h-screen bg-gray-50">
-            @livewire('navigation-dropdown')
+        
+        <div class="min-h-screen dark:bg-gray-900 bg-white">
 
-            @if(!Request::is('dashboard'))
-                <!-- Page Heading -->
-                <header class="relative pl-64">
-                    <div class="w-full py-5 mx-auto sm:px-6">
-                        {{ $header ?? '' }}
+            <div class="flex max-w-7xl flex mx-auto">
+                @include('partials.sidebar-left')
+
+                <!-- Page Content -->
+                <main class="w-full">
+                    <div class="w-full h-16 text-gray-700 border-b border-gray-100 dark:border-gray-800 dark:text-white text-lg font-bold flex items-center px-4">
+                        <span>{{ config('title.' . request()->path()) }}</span>
                     </div>
-                </header>
-            @endif
+                    {{ $slot }}
+                </main>
 
-            <!-- Page Content -->
-            <main class="pl-64 @if(Request::is('dashboard')){{ 'pt-5' }}@endif">
-                {{ $slot }}
-            </main>
+                @include('partials.sidebar-right')
+            </div>
+
         </div>
         @livewire('check-user-badges')
 
@@ -47,7 +49,7 @@
                     <div class="p-5">
                         <h2 class="text-xl">Welcome to Your Dashboard</h2>
                         <p class="py-4 text-lg text-gray-500">This is your guild dashboard. On your dashboard you can post a quick message in your company feed, start your shift, and view your guild status.</p>
-                        <p class="py-2 pb-4 text-lg text-gray-500" target="_blank">Next, you may want to invite a few more members to your guild by telling them to signup at <a href="{{ url('register') }}" class="text-purple-500 underline">{{ url('register') }}</a></p>
+                        <p class="py-2 pb-4 text-lg text-gray-500" target="_blank">Next, you may want to invite a few more members to your guild by telling them to signup at <a href="{{ url('register') }}" class="text-green-500 underline">{{ url('register') }}</a></p>
                         <button @click="show=false" class="inline-flex items-center justify-center flex-shrink-0 w-auto w-full px-4 py-4 mt-4 text-lg font-semibold tracking-wide text-center text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">Awesome! Let's go.</button>
 
                     </div>
@@ -55,7 +57,6 @@
             @endif
 
         @stack('modals')
-
         @livewireScripts
     </body>
 </html>
