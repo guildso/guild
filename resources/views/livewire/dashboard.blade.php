@@ -13,7 +13,7 @@
                     <button wire:submit.prevent="store()" class="inline-flex items-center justify-center flex-shrink-0 w-auto px-4 py-2 text-xs font-semibold tracking-wide text-center text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">Post</button>
                 </form>
 
-                <div class="flex justify-between items-center p-5 space-x-4 @if($shift){{ 'bg-green-500' }}@else{{ 'bg-gray-100 dark:bg-gray-700' }}@endif">
+                <div class="flex justify-between items-center p-5 space-x-4 @if($shift){{ 'bg-green-500' }}@else{{ 'bg-gray-100 dark:bg-gray-800' }}@endif">
                     @if($shift)
                     <p class="pl-1 font-bold text-white">You are currently on shift</p>
                     @else

@@ -11,25 +11,22 @@
                                 {{ session('message') }}
                             </div>
                         @endif
+                            
+                            <p class="mt-8 mb-4 text-base text-gray-700 dark:text-gray-300">This is your shift page. Here you can view logs of your shifts, and view some metrics about your shift.</p>
+                            <h3 class="my-2 text-base font-bold text-green-500">Total hours contributed to your guild: <span>{{  auth()->user()->totalHoursWorked() }}</span></h3>
+                            
 
-                        <div class="overflow-hidden shadow sm:rounded-md">
-                            <div class="px-4 py-5 bg-white sm:p-6">
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-4">
-                                        <h1 class="font-black text-8xl">Your Shift</h1>
-                                        <p class="mt-3 text-lg text-gray-700">This is your shift page. Here you can view logs of your shifts, and view some metrics about your shift.</p>
-                                        <h3 class="my-2 text-base font-bold text-green-500">Total hours contributed to your guild: <span>{{  auth()->user()->totalHoursWorked() }}</span></h3>
-                                        <label class="block text-sm font-medium text-gray-700" for="current_password">
-                                            Currently not on shift.
-                                        </label>
-                                    </div>
+                            <div class="flex items-center justify-between">
+                                <div class="block text-sm font-medium dark:text-gray-400 text-gray-700">
+                                    @if(auth()->user()->isOnShift())
+                                        <span class="text-green-500">Currently on shift. Click the stop shift button to end shift
+                                    @else
+                                        <span>Currently not on shift. Click the start shift button to begin shift.</span>
+                                    @endif
                                 </div>
-                            </div>
 
-                            <div class="flex items-center justify-end px-4 py-3 text-right bg-gray-50 sm:px-6">
                                 @livewire('shifts')
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

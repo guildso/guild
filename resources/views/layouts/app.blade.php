@@ -21,11 +21,11 @@
         
         <div class="min-h-screen dark:bg-gray-900 bg-white">
 
-            <div class="flex max-w-7xl flex mx-auto">
+            <div class="flex max-w-7xl relative mx-auto">
                 @include('partials.sidebar-left')
 
                 <!-- Page Content -->
-                <main class="w-full">
+                <main class="w-full pl-48"><!-- max-w-5xl -->
                     <div class="w-full h-16 text-gray-700 border-b border-gray-100 dark:border-gray-800 dark:text-white text-lg font-bold flex items-center px-5">
                         <span>{{ config('title.' . request()->path()) }}</span>
                     </div>
