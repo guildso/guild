@@ -3,7 +3,7 @@
        Team Members
     </div>
     <div class="relative">
-        <ul class="relative" wire:poll.10ms>
+        <ul class="relative" wire:poll.1s>
             @include('partials.member-card', ['member' => auth()->user()])
             @foreach (auth()->user()->currentTeam->teamShifts() as $member)
                 @if( auth()->user()->id != $member->id)

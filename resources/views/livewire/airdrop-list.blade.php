@@ -34,7 +34,7 @@
                                 @endif
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-200" wire:poll.1s>
                             @foreach($airdrops as $airdrop)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -68,7 +68,7 @@
                                         @else
                                             <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                                 <button class="inline-flex items-center justify-center w-full px-4 py-2 text-xs font-semibold tracking-widest text-center text-white uppercase transition duration-150 ease-in-out bg-gray-800 hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray border border-transparent rounded-md disabled:opacity-25" disabled>
-                                                    Approved
+                                                    {{ ucfirst($airdrop->status) }}
                                                 </button>
                                             </td>
                                         @endif
