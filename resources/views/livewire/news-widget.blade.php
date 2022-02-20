@@ -1,4 +1,4 @@
-<div class="w-full mx-0" wire:poll.10ms>
+<div class="w-full mx-0" wire:poll.1s>
     <div class="w-full h-16 text-gray-700 border-b border-gray-100 dark:border-gray-800 dark:text-white text-lg font-bold flex items-center px-5">
         Latest Company News
     </div>

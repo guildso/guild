@@ -33,14 +33,21 @@ function transfer() {
 # Transfer ID
 ##
 function transfer_id() {
+    count=0
     while true; do
         transaction=$(cat ${transfer_log} | grep "Signature" | tail -n 1 | awk '{print $2}')
         sleep 2
         if [[ ${transaction} ]]; then
             break
         fi
+        # Wiat 10 minutes for the transfer to complete, else mark as failed
+        if [[ ${count} -gt 300 ]]; then
+            mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET status='failed' WHERE id=${id}"
+            exit 1
+        fi
     done
-    mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET transaction='${transaction}' WHERE id=${id}"
+
+    mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET transaction='${transaction}', status='completed' WHERE id=${id}"
 }
 
 ##

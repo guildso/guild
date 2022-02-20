@@ -33,7 +33,7 @@ class AirdropList extends Component
         if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'airdrop')){
             try {
                 $airdrop = Airdrop::find($id);
-                $airdrop->status = 'approved';
+                $airdrop->status = 'pending';
 
                 Artisan::call('solana:approve', [
                     'token' => env('SOLANA_TOKEN_ADDRESS'),
