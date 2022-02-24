@@ -34,6 +34,55 @@
                 @endif
 
         </div>
+
+        <div x-data="{ menu: false }" class="relative mt-5 w-48 pr-3 border-t border-gray-200 dark:border-gray-700 text-sm pt-5 pr-3">
+            <div x-on:click="menu=!menu" class="rounded-md group flex justify-between items-center px-2 group py-2 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer text-gray-400 hover:text-gray-500  dark:hover:text-gray-300 font-medium">
+                
+                <div class="flex items-center h-full">
+                    <svg class="w-6 h-6 pr-1.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                    <span>Light Mode</span>
+                </div>
+                <svg class="w-4 h-4 opacity-0 text-gray-400 group-hover:opacity-100 transform -translate-x-3 group-hover:-translate-x-2 transition-all ease-out duration-150" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+
+            </div>
+            <div class="w-full relative">
+                <div x-show="menu"
+                    x-on:click.away="menu=false"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95"
+                    class="w-full h-auto bg-white dark:bg-gray-800 shadow-lg border origin-top select-none dark:border-gray-700 border-gray-100 rounded-lg overflow-hidden absolute top-0 mt-1 z-30"
+                    x-cloak>
+
+                    <div x-on:click="toggleDarkMode(false); menu=false" class="group flex justify-between items-center px-2 group py-2 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 font-medium">
+                        <div class="flex items-center h-full">
+                            <svg class="w-6 h-6 pr-1.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                            <span>Light Mode</span>
+                        </div>
+                    </div>
+
+                    <div x-on:click="toggleDarkMode(true); menu=false"  class="group flex justify-between items-center px-2 group py-2 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 font-medium">
+                        <div class="flex items-center h-full">
+                            <svg class="w-6 h-6 pr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            
+                            <span>Dark Mode</span>
+                        </div>
+                    </div>
+
+                    <div x-on:click="menu=false" class="group flex justify-between items-center px-2 group py-2 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 font-medium">
+                        <div class="flex items-center h-full">
+                            <svg  class="w-6 h-6 pr-2 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="none"><path d="M9 20h6m4-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2zm-7 0v4-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                            
+                            <span>System</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -83,9 +132,8 @@
                 x-transition:leave="transition ease-in duration-75"
                 x-transition:leave-start="transform opacity-100 scale-100"
                 x-transition:leave-end="transform opacity-0 scale-95"
-                style="display: none;"
                 @click.away="open=false"
-                @click="open = false">
+                @click="open = false" x-cloak>
 
                 <div class="py-1 bg-white dark:bg-gray-700 rounded-md mb-2 border dark:border-gray-800 border-gray-100">
                     <!-- Account Management -->

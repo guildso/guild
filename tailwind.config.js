@@ -4,15 +4,12 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/views/partials/sidebar-left.blade.php',
     ],
 
     theme: {
         extend: {
         },
-    },
-
-    variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
     },
 
     plugins: [

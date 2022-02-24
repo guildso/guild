@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.form-input{
+    @apply block w-full mt-1 dark:border-gray-900 dark:bg-gray-800 rounded-md shadow-sm dark:text-white focus:border-green-200 dark:focus:border-green-900 focus:ring focus:ring-green-500 focus:ring-opacity-50;
+}
+
+[x-cloak]{
+    display:none;
+}

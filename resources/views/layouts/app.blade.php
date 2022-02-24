@@ -8,7 +8,7 @@
         <title>@if(isset(auth()->user()->currentTeam->name)){{ auth()->user()->currentTeam->name }}@else{{ config('app.name', 'Guild') }}@endif</title>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="/css/app.css?{{ uniqid() }}">
         <style>[x-cloak]{ display:none }</style>
 
         @livewireStyles
