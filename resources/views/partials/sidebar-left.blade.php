@@ -52,7 +52,7 @@
                 <div class="relative flex items-center font-semibold">
                     <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                     <div class="flex flex-col items-start">
-                        <span class="font-semibold leading-none">{{ Auth::user()->name }}</span>
+                        <span class="font-semibold leading-none text-xs truncate w-24 text-left">{{ Auth::user()->name }}</span>
                         <span class="text-xs mt-0.5 leading-none @if(auth()->user()->isOnShift()){{ 'text-green-400' }}@endif">
                             @if(auth()->user()->isOnShift())
                                 On Shift

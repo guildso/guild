@@ -19,7 +19,7 @@
             <div class="flex items-center justify-between mb-4">
                 <div class="flex-1 pr-4">
                     <div class="relative md:w-1/3">
-                        <input type="search" wire:model="search" class="w-full py-2 pl-10 pr-4 font-medium text-gray-600 border-b border-gray-200 rounded-lg shadow focus:outline-none focus:shadow-outline" placeholder="Search task by title...">
+                        <input type="search" wire:model="search" class="w-full py-2 pl-10 pr-4 font-medium text-gray-600 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 rounded-lg shadow focus:outline-none focus:shadow-outline" placeholder="Search task by title...">
                         <div class="absolute top-0 left-0 inline-flex items-center p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
@@ -75,11 +75,11 @@
                     </div>
                 </div>
             </div>
-            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
+            <div class="relative">
+                <div class="inline-block max-w-3xl min-w-full py-2 align-middle">
+                    <div class="overflow-hidden border-b border-gray-200 dark:border-gray-700 border-gray-200 shadow sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -95,10 +95,6 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                        Role
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Change Status
                                     </th>
                                     <th scope="col"
@@ -107,7 +103,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($tasks as $task)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
@@ -149,11 +145,6 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @if($task->user)
-                                                {{ $task->user->teamRole($task->user->currentTeam)->name }}
-                                            @endif
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @if($task->status == 'To Do')
                                                 <button wire:click="inProgressTask({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">Set in progress</button>
                                             @endif
@@ -181,9 +172,9 @@
                             </tbody>
                         </table>
                         @if( count($tasks) > 0 )
-                        <div wire:click="loadMore()" class="flex items-center justify-start w-full py-2 pl-8 text-xs font-medium text-gray-500 duration-200 ease-out bg-gray-200 cursor-pointer hover:text-gray-600 hover:bg-gray-300 transition-color md:pl-0 md:justify-center">Load More</div>
+                        <div wire:click="loadMore()" class="flex items-center justify-start w-full py-2 pl-8 text-xs font-medium text-gray-500 dark:text-gray-400 duration-200 ease-out bg-gray-200 dark:bg-gray-600 cursor-pointer hover:text-gray-600 hover:bg-gray-300 transition-color md:pl-0 md:justify-center">Load More</div>
                         @else
-                            <div class="flex items-center justify-start w-full py-2 pl-8 text-xs font-medium text-gray-500 duration-200 ease-out bg-gray-100 transition-color md:pl-0 md:justify-center">No more entries</div>
+                            <div class="flex items-center justify-start w-full py-2 pl-8 text-xs font-medium text-gray-500 duration-200 ease-out bg-gray-100 dark:bg-gray-600 transition-color md:pl-0 md:justify-center">No more entries</div>
                         @endif
                     </div>
                 </div>
