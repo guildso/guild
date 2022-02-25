@@ -33,7 +33,7 @@
                     <div class="flex rounded-lg shadow">
                         <div class="relative" x-data="{ open: false }">
                             <button @click.prevent="open = !open"
-                                class="inline-flex items-center px-2 py-2 font-semibold text-gray-500 bg-white rounded-lg hover:text-blue-500 focus:outline-none focus:shadow-outline md:px-4">
+                                class="inline-flex items-center px-2 py-2 font-semibold text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 hover:text-gray-600 bg-white dark:bg-gray-700 rounded-lg focus:outline-none focus:shadow-outline md:px-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden" viewBox="0 0 24 24"
                                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -51,24 +51,24 @@
                             </button>
 
                             <div x-show="open" @click.away="open = false"
-                                class="absolute top-0 right-0 z-40 block w-40 py-1 mt-12 -mr-1 overflow-hidden bg-white rounded-lg shadow-lg">
-                                <label class="flex items-center justify-start px-4 py-2 text-truncate hover:bg-gray-100">
-                                    <div class="mr-3 text-teal-600">
-                                        <input type="checkbox" wire:model="taskStatus" value="To Do" class="form-checkbox focus:outline-none focus:shadow-outline" checked="">
+                                class="absolute top-0 right-0 z-40 block w-40 py-1 mt-12 -mr-1 overflow-hidden bg-white dark:bg-gray-700 rounded-lg shadow-lg">
+                                <label class="flex items-center justify-start px-4 py-2 text-truncate cursor-pointer">
+                                    <div class="mr-3 text-gray-600">
+                                        <input type="checkbox" wire:model="taskStatus" value="To Do" class="form-checkbox rounded focus:outline-none focus:shadow-outline" checked="">
                                     </div>
-                                    <div class="text-gray-700 select-none" >To Do </div>
+                                    <div class="text-gray-700 dark:text-gray-300 select-none" >To Do </div>
                                 </label>
-                                <label class="flex items-center justify-start px-4 py-2 text-truncate hover:bg-gray-100">
-                                    <div class="mr-3 text-teal-600">
-                                        <input type="checkbox" wire:model="taskStatus" value="In Progress" class="form-checkbox focus:outline-none focus:shadow-outline" checked="">
+                                <label class="flex items-center justify-start px-4 py-2 text-truncate cursor-pointer">
+                                    <div class="mr-3 text-gray-600">
+                                        <input type="checkbox" wire:model="taskStatus" value="In Progress" class="form-checkbox rounded focus:outline-none focus:shadow-outline" checked="">
                                     </div>
-                                    <div class="text-gray-700 select-none" >In Progress </div>
+                                    <div class="text-gray-700 dark:text-gray-300 select-none" >In Progress </div>
                                 </label>
-                                <label class="flex items-center justify-start px-4 py-2 text-truncate hover:bg-gray-100">
-                                    <div class="mr-3 text-teal-600">
-                                        <input type="checkbox" wire:model="taskStatus" value="Completed" class="form-checkbox focus:outline-none focus:shadow-outline" checked="">
+                                <label class="flex items-center justify-start px-4 py-2 text-truncate cursor-pointer">
+                                    <div class="mr-3 text-gray-600">
+                                        <input type="checkbox" wire:model="taskStatus" value="Completed" class="form-checkbox rounded focus:outline-none focus:shadow-outline" checked="">
                                     </div>
-                                    <div class="text-gray-700 select-none" >Completed</div>
+                                    <div class="text-gray-700 dark:text-gray-300 select-none" >Completed</div>
                                 </label>
                             </div>
                         </div>
@@ -77,28 +77,28 @@
             </div>
             <div class="relative">
                 <div class="inline-block max-w-3xl min-w-full py-2 align-middle">
-                    <div class="overflow-hidden border-b border-gray-200 dark:border-gray-700 border-gray-200 shadow sm:rounded-lg">
+                    <div class="overflow-scroll border-b border-gray-200 dark:border-gray-700 border-gray-200 shadow sm:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                         User
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                         Task
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                         <a wire:click.prevent="sortBy('status')" role="button" href="#" class="underline">Status</a>
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                         Change Status
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                         Manage
                                     </th>
                                 </tr>
@@ -115,7 +115,7 @@
                                                             alt="">
                                                     </div>
                                                     <div class="ml-4">
-                                                        <div class="text-sm font-medium text-gray-900">
+                                                        <div class="text-sm font-medium text-gray-900 dark:text-gray-200">
                                                             {{ $task->user->name }}
                                                         </div>
                                                         <div class="text-sm text-gray-500">
@@ -124,7 +124,7 @@
                                                     </div>
                                                 @else
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-gray-200">
                                                         Unassigned Task
                                                     </div>
                                                     <div class="text-sm text-gray-500">
@@ -135,8 +135,8 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ $task->name }}</div>
-                                            <div class="text-sm text-gray-500">{{ $task->description }}</div>
+                                            <div class="text-sm text-gray-900 dark:text-gray-200">{{ $task->name }}</div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-400">{{ $task->description }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span
@@ -146,23 +146,23 @@
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @if($task->status == 'To Do')
-                                                <button wire:click="inProgressTask({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">Set in progress</button>
+                                                <button wire:click="inProgressTask({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-500 hover:dark-text-indigo-400">Set in progress</button>
                                             @endif
                                             @if($task->status == "In Progress")
-                                                <button wire:click="completeTask({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">Complete Task</button>
+                                                <button wire:click="completeTask({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-500 hover:dark-text-indigo-400">Complete Task</button>
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                            <button wire:click="assign({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">
+                                            <button wire:click="assign({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-500 hover:dark-text-indigo-400">
                                                 @if($task->user_id == auth()->user()->id)
                                                     Unassign
                                                 @else
                                                     Assign
                                                 @endif
                                             </button>
-                                            <button wire:click="edit({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">Edit</button>
+                                            <button wire:click="edit({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-500 hover:dark-text-indigo-400">Edit</button>
                                             @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'delete'))
-                                                <button wire:click="delete({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                                <button wire:click="delete({{ $task->id }})" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-500 hover:dark-text-indigo-400">Delete</button>
                                             @endif
                                         </td>
                                     </tr>

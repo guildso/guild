@@ -12,7 +12,7 @@
                     x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                     class="fixed inset-0 transition-opacity" aria-hidden="true">
-                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    <div class="absolute inset-0 bg-gray-500 dark:bg-gray-700 opacity-75"></div>
                 </div>
 
                 <!-- This element is to trick the browser into centering the modal contents. -->
@@ -24,7 +24,7 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    class="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                    class="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white dark:bg-gray-800 rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
                     role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div>
                         <div class="flex items-center justify-center w-12 h-12 mx-auto bg-green-100 rounded-full">
@@ -36,7 +36,7 @@
                             </svg>
                         </div>
                         <div class="mt-3 text-center sm:mt-5">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-headline">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-200" id="modal-headline">
                                 You earned the {{ $badge['name'] }} badge!
                             </h3>
                             <div class="mt-2">
