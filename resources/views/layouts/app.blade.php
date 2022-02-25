@@ -14,12 +14,14 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         @include('partials.dark-mode-toggle')
     </head>
-    <body class="font-sans antialiased" id="app">
+    <body class="font-sans antialiased">
         
-        <div class="min-h-screen dark:bg-gray-900 bg-white">
+        <div 
+            class="min-h-screen dark:bg-gray-900 bg-white"
+            id="app" x-data x-ref="app" x-init="$watch('app.appearance', value => app.appearanceChange(value));">
 
             <div class="flex max-w-7xl relative mx-auto">
                 @include('partials.sidebar-left')
@@ -36,6 +38,7 @@
             </div>
 
         </div>
+
         @livewire('check-user-badges')
 
             @if(Request::get('onboard'))

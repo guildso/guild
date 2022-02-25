@@ -1,12 +1,47 @@
 require('./bootstrap');
-require('alpinejs');
+import Alpine from 'alpinejs'
 import hotkeys from 'hotkeys-js';
 import { EmojiButton } from '@joeattardi/emoji-button';
+import persist from '@alpinejs/persist'
+
+window.Alpine = Alpine
+Alpine.plugin(persist)
+
+document.addEventListener('alpine:init', () => {
+
+    //bar = document.getElementById('bar');
+
+    Alpine.store('app', {
+        init(){
+            
+        },
+        appearance: Alpine.$persist('auto').as('appearance'),
+        appearance_menu: false,
+        user_menu_open: false,
+        appearanceChange: function(value){
+            if(value == 'light'){
+                document.documentElement.classList.remove('dark')
+            } else if(value == 'dark') {
+                document.documentElement.classList.add('dark')
+            } else {
+                var match = window.matchMedia('(prefers-color-scheme: dark)');
+                if(match.matches){
+                    document.documentElement.classList.add('dark')
+                } else {
+                    document.documentElement.classList.remove('dark')
+                }
+            }
+        }
+    });
+});
+
+Alpine.start()
+
+window.app = Alpine.store('app');
 
 hotkeys('ctrl+return, command+return', function() {
     window.livewire.emit('toggleShift');
 });
-
 
 window.notificationOpen = false;
 window.notificationTimeout = null;

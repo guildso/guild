@@ -1,29 +1,31 @@
 <script>
 /*** Dark Mode Settings */
 
-window.toggleDarkMode = function(isDark) {
-  if(isDark){
+let appearance = localStorage.getItem('appearance');
+console.log(appearance);
+
+let match = window.matchMedia('(prefers-color-scheme: dark)');
+
+if(appearance == '"dark"'){
+  document.documentElement.classList.add('dark')
+} else if(appearance == '"light"'){
+  document.documentElement.classList.remove('dark')
+} else {
+  if(match.matches && localStorage.getItem('appearance') == '"auto"'){
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
   }
 }
-
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.classList.add('dark')
-} else {
-  document.documentElement.classList.remove('dark')
-}
-
-if (window.matchMedia) {
-  var match = window.matchMedia('(prefers-color-scheme: dark)')
-  toggleDarkMode(match.matches);
+  
  
   match.addEventListener('change', e => {
-      toggleDarkMode(match.matches);
+      if(match.matches){
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
   })
-}
 
 /***** End Dark Mode Settings */
 </script>
