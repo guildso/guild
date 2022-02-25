@@ -12,7 +12,7 @@
                         <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Total earnings: <span class="font-black">{{ auth()->user()->airdrop }}</span></p>
                         <div>
                             @if (isset($solWallet))
-                                <div class="d-flex justify-content-center mt-5">
+                                <div class="d-flex justify-content-center mt-5 text-gray-700 dark:text-gray-200">
                                     Your wallet: {{ $solWallet }}
                                 </div>
                             @endif
@@ -20,7 +20,7 @@
 
                         <div>
                             @if(isset($solBalance))
-                                <div class="d-flex justify-content-center mt-5">
+                                <div class="d-flex justify-content-center mt-5 text-gray-700 dark:text-gray-200">
                                     <b>Balance:</b> {{ $solBalance }} SOL
                                 </div>
                             @endif
