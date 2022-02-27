@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AirdropController;
 use App\Http\Controllers\BadgesController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ShiftsController;
@@ -45,12 +46,16 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
                     ->name('badges');
 
         // News routes
-        Route::get('news', [NewsController::class, 'index'])
+        Route::get('/news', [NewsController::class, 'index'])
                     ->name('news');
 
         // Airdrop routes
-        Route::get('airdrop', [AirdropController::class, 'index'])
+        Route::get('/airdrop', [AirdropController::class, 'index'])
                     ->name('airdrop');
+
+        // SPL guide
+        Route::get('/guide', [GuideController::class, 'index'])
+                    ->name('guide');
 
     });
 });

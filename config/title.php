@@ -8,6 +8,7 @@ return [
     'badges' => '🥇 Badges',
     'airdrop' => '💸 AirDrop',
     'news' => '📰 News',
+    'guide' => '📖 Guide',
 
     'user/profile' => 'Profile Information'
 ];
