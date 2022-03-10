@@ -26,8 +26,7 @@ export $(cat ${env_location}/.env | xargs)
 # Transfer function
 ##
 function transfer() {
-    solana config set --url https://solana-api.projectserum.com
-    spl-token transfer --allow-unfunded-recipient --fund-recipient ${token_address} ${amount} ${recipient} >> ${transfer_log} 2>&1
+    spl-token transfer --url https://solana-api.projectserum.com --no-wait --allow-unfunded-recipient --fund-recipient ${token_address} ${amount} ${recipient} >> ${transfer_log} 2>&1
 }
 
 ##
@@ -38,11 +37,13 @@ function transfer_id() {
     while true; do
         transaction=$(cat ${transfer_log} | grep "Signature" | tail -n 1 | awk '{print $2}')
         sleep 2
+        # Check if the transaction is ready
         if [[ ${transaction} ]]; then
             break
         fi
-        # Wiat 10 minutes for the transfer to complete, else mark as failed
+        # Wait 10 minutes for the transfer to complete, else mark as failed
         if [[ ${count} -gt 300 ]]; then
+            echo "Transfer failed" >> ${transfer_log}
             mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET status='failed' WHERE id=${id}"
             exit 1
         fi
