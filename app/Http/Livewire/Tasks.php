@@ -203,8 +203,14 @@ class Tasks extends Component
     {
         if (auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'read')) {
             Task::find($id)->update(['status' => 'Completed']);
+            $task = Task::find($id);
+
+            if(!$task->user_id){
+                $task->user_id = auth()->user()->id;
+                $task->save();
+            }
             
-            $taskCompleted = new TaskCompleted(Task::find($id));
+            $taskCompleted = new TaskCompleted($task);
             auth()->user()->givePoint($taskCompleted);
 
             $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'You have earned ' . $taskCompleted->points . ' points for completing this task!']);

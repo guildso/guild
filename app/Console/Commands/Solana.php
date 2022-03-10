@@ -48,7 +48,7 @@ class Solana extends Command
                 'STORAGE_PATH' => storage_path(),
             ]
         );
-        $proc->start();
+        $proc->run();
         return $this->info('Transfer approved');
     }
 }

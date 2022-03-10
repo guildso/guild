@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/night-owl.min.css">
     <link rel="stylesheet" href="{{ asset('css/guide.css') }}">
     <div class="max-w-6xl mr-auto sm:px-6 lg:px-8">
-        <div class="pt-3 dark:text-white">
+        <div class="pt-10 dark:text-white">
             <div class="max-w-full px-5 pb-10 prose prose-md sm:px-8 lg:prose-lg lg:max-w-full">
                 @markdown
 

@@ -59,6 +59,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="//unpkg.com/bs58"></script>
 
     <script>
         async function phantomLogin() {
@@ -82,8 +83,10 @@
         async function showBalance(){
             let provider = window.solana;
             let connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'), 'confirmed');
-            connection.getBalance(provider.publicKey)
+            connection.getTokenAccountBalance( bs58.encode('FJqKMErTJFQYxjqKDQkrgfyGKVgpefqH7Amets2pPmGc'))
                 .then(function (value) {
+                    console.log('val: ');
+                    console.log(value);
                     Livewire.emit('getSolBalance', value);
             });
         }
@@ -94,6 +97,8 @@
                     window.solana.connect({onlyIfTrusted: true})
                         .then(({publicKey}) => {
                             connectAccountAnimation(publicKey.toString());
+                            console.log('the public key: ');
+                            console.log(publicKey.toString());
                             Livewire.emit('getSolWallet', publicKey.toString());
                         })
                         .catch(() => {

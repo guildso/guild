@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
 
 class Airdrop extends Component
@@ -22,6 +23,7 @@ class Airdrop extends Component
             $this->solWallet = $value;
         }
     }
+
 
     public function getSolBalance($value)
     {
@@ -46,17 +48,31 @@ class Airdrop extends Component
         $airdrop = new \App\Models\Airdrop;
         $airdrop->user_id = auth()->user()->id;
         $airdrop->team_id = auth()->user()->currentTeam->id;
-        $airdrop->status = 'requested';
+        $airdrop->status = 'processing';
         $airdrop->wallet = $this->solWallet;
         $airdrop->amount = auth()->user()->availablePayout();
 
-        if(auth()->user()->airdrops()->where('status', 'requested')->exists()) {
+        $airdrop->save();
+
+        Artisan::call('solana:approve', [
+            'token' => env('SOLANA_TOKEN_ADDRESS'),
+            'recipient' => $airdrop->wallet,
+            'amount' => $airdrop->amount,
+            'id' => $airdrop->id,
+        ]);
+
+        $airdrop->user->airdrop += $airdrop->amount;
+
+        $airdrop->save();
+        $airdrop->user->save();
+
+        if(auth()->user()->airdrops()->where('status', 'processing')->exists()) {
             $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop already requested!']);
             return;
         }
 
         $airdrop->save();
-        $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop requested successfully!']);
+        $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop transferred successfully!']);
         $this->emit('refreshAirdrops');
 
     }

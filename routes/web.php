@@ -59,3 +59,17 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
 
     });
 });
+
+// use Symfony\Component\Process\Process;
+
+// Route::get('test_out', function(){
+//     $proc = Process::fromShellCommandline('bash ' . base_path().'/app/Console/Commands/Solana/test.sh', null, 
+//             [
+//             ]
+//         );
+
+//         $proc->start();
+        
+
+//         return $this->info('Transfer approved');
+// });
