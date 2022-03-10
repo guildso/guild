@@ -26,6 +26,7 @@ export $(cat ${env_location}/.env | xargs)
 # Transfer function
 ##
 function transfer() {
+    solana config set --url https://solana-api.projectserum.com
     spl-token transfer --allow-unfunded-recipient --fund-recipient ${token_address} ${amount} ${recipient} >> ${transfer_log} 2>&1
 }
 
