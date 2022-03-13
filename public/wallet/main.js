@@ -3,14 +3,6 @@ import * as splToken from '@solana/spl-token';
 import * as solanaWeb3 from '@solana/web3.js';
 window.myTokenAddress = document.getElementById('token-address').value;
 
-
-
-
-
-// console.log(`Associated Token Address for token ${TOKEN_ADDRESS} => ${(await findAssociatedTokenAddress(YOUR_DEFAULT_SOL_ADDRESS,TOKEN_ADDRESS)).toBase58()}`)
-
-
-
 window.phantomLogin = async function() {
     const isPhantomInstalled = window.solana && window.solana.isPhantom;
     if (!isPhantomInstalled) {
@@ -18,6 +10,7 @@ window.phantomLogin = async function() {
     } else {
         try {
             const resp = await window.solana.connect();
+            document.getElementById('wallet-login').classList.add('hidden');
             connectAccountAnimation(resp.publicKey.toString());
             Livewire.emit('getSolWallet', resp.publicKey.toString());
         } catch (err) {
@@ -26,18 +19,32 @@ window.phantomLogin = async function() {
         }
     }
 }
-async function connectAccountAnimation(publicKey) {
-    showBalance();
-}
-async function showBalance(){
-    let provider = window.solana;
 
+async function connectAccountAnimation(publicKey) {
     let connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'), 'confirmed');
+    
+    showBalance(connection);
+    showTokenBalance(connection);
+
+    setTimeout(function(){
+        document.getElementById('wallet-loading-container').classList.add('hidden');
+        document.getElementById('wallet-authenticated').classList.remove('hidden');
+    }, 1000);
+}
+
+
+async function showBalance(connection){
+    let provider = window.solana;
 
     connection.getBalance(provider.publicKey)
         .then(function (value) {
             Livewire.emit('getSolBalance', value);
     });
+}
+
+async function showTokenBalance(connection){
+
+    let provider = window.solana;
 
     const tokenAccounts = await connection.getTokenAccountsByOwner(provider.publicKey,
         {
@@ -48,12 +55,6 @@ async function showBalance(){
   tokenAccounts.value.forEach((e) => {
         let account_address = e.pubkey.toBase58();
 
-        //   let accInfo = connection.getAccountInfo(account_address)
-        //     .then(function (value) {
-        //         console.log(value);
-        //     });
-
-        //console.log(splToken.AccountLayout.decode(e.account.data));
 
         let accountInfo = splToken.AccountLayout.decode(e.account.data);
 
@@ -62,41 +63,17 @@ async function showBalance(){
         let tokenDecimals = .000000001;
 
         if(myTokenAddress == tokenAddress){
-            console.log('mm: ');
-            document.getElementById('token-amount').innerHTML = (tokenAmount*tokenDecimals);
+            console.log(tokenAmount);
+            console.log(tokenDecimals);
+
+            document.getElementById('token-amount').innerHTML = (tokenAmount*tokenDecimals).toFixed(9);
             document.getElementById('token-symbol').classList.remove('hidden');
         }
 
-
-    //console.log(`${new solanaWeb3.PublicKey(accountInfo.mint)}   ${accountInfo.amount}`);
-
-    //if()
-    
-// splToken.getAccount(connection, e.pubkey, 1, splToken.TOKEN_PROGRAM_ID)
-//     .then(function (value) {
-//             console.log(value);
-//     });
-
-     // console.log(splToken.AccountLayout.getAccount(e.account.data))
-
-      //console.log(new TextDecoder("utf-8").decode(e.account.data));
-    //   console.log(splToken.AccountLayout.unpackAccount(e.account.data));
-    //const accountInfo = splToken.AccountLayout.decode(e.account.data);
-    // console.log(`${new solanaWeb3.PublicKey(accountInfo.mint)}   ${accountInfo.amount}`);
   })
-
-
-    // connection.getAccountInfoAndContext(provider.publicKey)
-    //     .then(function (value) {
-    //         console.log('cool: ');
-    //         console.log(value);
-            
-    // });
-    // connection.getTokenAccountBalance( new solanaWeb3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s') )
-    //     .then(function (value) {
-    //         console.log(value);
-    // });
 }
+
+
 try {
     window.onload = () => {
         const isPhantomInstalled = window.solana && window.solana.isPhantom;
@@ -108,6 +85,8 @@ try {
                 })
                 .catch(() => {
                     console.log("Not connected");
+                    document.getElementById('wallet-loading').classList.add('hidden');
+                    document.getElementById('wallet-login').classList.remove('hidden');
                 })
         }
     }

@@ -66,13 +66,7 @@ class Airdrop extends Component
         $airdrop->save();
         $airdrop->user->save();
 
-        if(auth()->user()->airdrops()->where('status', 'processing')->exists()) {
-            $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop already requested!']);
-            return;
-        }
-
-        $airdrop->save();
-        $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Airdrop transferred successfully!']);
+        $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Your Payout has been Processed']);
         $this->emit('refreshAirdrops');
 
     }

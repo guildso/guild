@@ -1,25 +1,25 @@
 <div>
-    <div class="flex flex-col mt-10">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+    <div class="flex flex-col mt-5">
+        <div class="-my-2 overflow-x-auto">
+            <div class="inline-block min-w-full py-2 align-middle">
                 <div class="overflow-scroll border-b border-gray-200 dark:border-gray-700 border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-700">
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
+                                    class="px-3 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                     Requested Time
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
+                                    class="px-3 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                     Amount
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
+                                    class="px-3 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                     Status
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
+                                    class="px-3 py-3 text-xs font-medium tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase">
                                     Wallet
                                 </th>
                                 @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'airdrop'))
@@ -37,13 +37,13 @@
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700" wire:poll.1s>
                             @foreach($airdrops as $airdrop)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900 dark:text-gray-200">{{ $airdrop->created_at }}</div>
+                                    <td class="px-3 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 dark:text-gray-200">{{ $airdrop->created_at->format('F j, Y h:i A') }}</div>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         <strong>{{ $airdrop->amount }}</strong>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ ucfirst($airdrop->status) }}
                                         @if ($airdrop->transaction)
                                             <p class="text-xs text-gray-300">
@@ -51,11 +51,11 @@
                                             </p>
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $airdrop->wallet }}
                                     </td>
                                     @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam, 'airdrop'))
-                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $airdrop->user->name }}
                                         </td>
                                         @if ($airdrop->status == 'requested')
