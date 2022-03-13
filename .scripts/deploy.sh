@@ -18,7 +18,7 @@ php artisan clear-compiled
 
 # Recreate cache
 php artisan optimize
-php artisan clear:config
+php artisan config:clear
 
 # Compile npm assets
 # npm run prod
