@@ -57,9 +57,11 @@ function transfer_id() {
 ##
 function main() {
     transfer
+    # Get the transaction ID
+    transfer_id
     # If the transfer was successful, then record the transfer ID
-    if [ $? -eq 0 ]; then
-        transfer_id
-    fi
+    # if [ $? -eq 0 ]; then
+    #    transfer_id
+    # fi
 }
 main
