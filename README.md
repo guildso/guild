@@ -155,3 +155,8 @@ If you discover a security vulnerability within Guild.so, please send an e-mail 
 ## 📃 License
 
 The Guild.so project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+# Troubleshooting
+
+In order to get the script `wallet.js` to execute successfully, you must cd into `./node_modules/@solana/spl-token` and run the following: `npm install --save @solana/web3.js`.

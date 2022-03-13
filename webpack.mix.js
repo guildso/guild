@@ -1,6 +1,30 @@
 const mix = require('laravel-mix');
 
+// mix.webpackConfig({
+//   module: {
+//     rules: [
+//       {
+//         test: /\.mjs$/i,
+//         resolve: { byDependency: { esm: { fullySpecified: false } } },
+//       },
+//     ],
+//   },
+// })
+
 require('laravel-mix-tailwind');
+
+
+// mix.override((webpackConfig) => {
+//     webpackConfig.module.rules.push({
+//         test: /\.mjs$/i,
+//         resolve: { byDependency: { esm: { fullySpecified: false } } },
+//       });
+// });
+
+// mix.override((webpackConfig) => {
+//     webpackConfig.resolve.extensions.push('.mjs');
+// });
+
 
 /*
  |--------------------------------------------------------------------------

@@ -433,6 +433,11 @@ input::placeholder,textarea::placeholder {
   min-height: 1.5em;
 }
 
+::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 0.5rem center;
@@ -793,11 +798,11 @@ select {
 .-mt-0 {
   margin-top: -0px;
 }
-.ml-64 {
-  margin-left: 16rem;
-}
 .mr-auto {
   margin-right: auto;
+}
+.ml-64 {
+  margin-left: 16rem;
 }
 .-ml-1\.5 {
   margin-left: -0.375rem;
@@ -997,11 +1002,14 @@ select {
 .max-w-sm {
   max-width: 24rem;
 }
-.max-w-4xl {
-  max-width: 56rem;
-}
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-full {
+  max-width: 100%;
+}
+.max-w-4xl {
+  max-width: 56rem;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -1571,6 +1579,12 @@ select {
 .pl-8 {
   padding-left: 2rem;
 }
+.pt-10 {
+  padding-top: 2.5rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
 .pl-5 {
   padding-left: 1.25rem;
 }
@@ -1580,17 +1594,11 @@ select {
 .pb-12 {
   padding-bottom: 3rem;
 }
-.pt-10 {
-  padding-top: 2.5rem;
-}
 .pb-2 {
   padding-bottom: 0.5rem;
 }
 .pt-0 {
   padding-top: 0px;
-}
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 .pl-10 {
   padding-left: 2.5rem;
@@ -2488,6 +2496,11 @@ select {
     padding-right: 5rem;
   }
 
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .sm\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -2603,6 +2616,10 @@ select {
 
   .lg\:w-12 {
     width: 3rem;
+  }
+
+  .lg\:max-w-full {
+    max-width: 100%;
   }
 
   .lg\:space-x-2 > :not([hidden]) ~ :not([hidden]) {

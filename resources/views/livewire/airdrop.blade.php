@@ -5,11 +5,19 @@
 
                 <div class="overflow-hidden sm:rounded-md">
                     <div class="px-1 py-5">
-                        <h1 class="text-6xl font-black text-gray-700 dark:text-white">Payouts</h1>
+                        <h1 class="text-6xl mb-5 font-black text-gray-700 dark:text-white">Payouts</h1>
+                        <div class="flex">
+                            <img src="{{ env('SOLANA_TOKEN_IMAGE') }}" class="w-20 h-20 rounded-full border-4 dark:border-gray-300 border-gray-600 p-2">
+                            <div class="flex flex-col pl-3 justify-center">
+                                <h3 class="dark:text-white font-medium text-gray-800 text-2xl">{{ env('SOLANA_TOKEN_NAME') }}</h3>
+                                <p id="token-amount" class="dark:text-gray-200 text-gray-700">Connect Your wallet to view your balance</p>
+                            </div>
+                        </div>
+                        <input type="hidden" id="token-address" value="{{ env('SOLANA_TOKEN_ADDRESS') }}">
+
                         <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Connect your Phantom wallet and request a payout via your company solana token.</p>
                         <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Total earned points: <span class="font-black">{{ auth()->user()->getPoints() }}</span></p>
                         <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Available payout: <span class="font-black">{{ auth()->user()->availablePayout() }}</span></p>
-                        <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Total earnings: <span class="font-black">{{ auth()->user()->airdrop }}</span></p>
                         <div>
                             @if (isset($solWallet))
                                 <div class="d-flex justify-content-center mt-5 text-gray-700 dark:text-gray-200">
@@ -58,56 +66,6 @@
             @livewire('airdrop-list')
         </div>
     </div>
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-    <script src="//unpkg.com/bs58"></script>
-
-    <script>
-        async function phantomLogin() {
-            const isPhantomInstalled = window.solana && window.solana.isPhantom;
-            if (!isPhantomInstalled) {
-                alert("Phantom browser extension is not detected!");
-            } else {
-                try {
-                    const resp = await window.solana.connect();
-                    connectAccountAnimation(resp.publicKey.toString());
-                    Livewire.emit('getSolWallet', resp.publicKey.toString());
-                } catch (err) {
-                    console.log("User rejected request");
-                    console.log(err);
-                }
-            }
-        }
-        async function connectAccountAnimation(publicKey) {
-            showBalance();
-        }
-        async function showBalance(){
-            let provider = window.solana;
-            let connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'), 'confirmed');
-            connection.getTokenAccountBalance( bs58.encode('FJqKMErTJFQYxjqKDQkrgfyGKVgpefqH7Amets2pPmGc'))
-                .then(function (value) {
-                    console.log('val: ');
-                    console.log(value);
-                    Livewire.emit('getSolBalance', value);
-            });
-        }
-        try {
-            window.onload = () => {
-                const isPhantomInstalled = window.solana && window.solana.isPhantom;
-                if (isPhantomInstalled) {
-                    window.solana.connect({onlyIfTrusted: true})
-                        .then(({publicKey}) => {
-                            connectAccountAnimation(publicKey.toString());
-                            console.log('the public key: ');
-                            console.log(publicKey.toString());
-                            Livewire.emit('getSolWallet', publicKey.toString());
-                        })
-                        .catch(() => {
-                            console.log("Not connected");
-                        })
-                }
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    </script>
+    {{-- <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script> --}}
+    <script src="/wallet/dist/main.js"></script>
 </div>
