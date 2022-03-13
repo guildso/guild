@@ -10,7 +10,8 @@
                             <img src="{{ env('SOLANA_TOKEN_IMAGE') }}" class="w-20 h-20 rounded-full border-4 dark:border-gray-300 border-gray-600 p-2">
                             <div class="flex flex-col pl-3 justify-center">
                                 <h3 class="dark:text-white font-medium text-gray-800 text-2xl">{{ env('SOLANA_TOKEN_NAME') }}</h3>
-                                <p id="token-amount" class="dark:text-gray-200 text-gray-700">Connect Your wallet to view your balance</p>
+                                <p wire:ignore class="dark:text-gray-200 text-gray-700 flex items-center leading-none"><span id="token-amount" class="text-lg mr-1">Connect Your wallet to view your balance</span><span id="token-symbol" class="hidden text-xs">{{ env('SOLANA_TOKEN_SYMBOL') }}</span></p>
+
                             </div>
                         </div>
                         <input type="hidden" id="token-address" value="{{ env('SOLANA_TOKEN_ADDRESS') }}">

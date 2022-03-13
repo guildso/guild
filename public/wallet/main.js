@@ -39,39 +39,34 @@ async function showBalance(){
             Livewire.emit('getSolBalance', value);
     });
 
-console.log('rad: ');
-console.log(splToken.TOKEN_PROGRAM_ID);
     const tokenAccounts = await connection.getTokenAccountsByOwner(provider.publicKey,
         {
             programId: splToken.TOKEN_PROGRAM_ID,
         }
     );
 
-  console.log("Token                                         Balance");
-  console.log("------------------------------------------------------------");
   tokenAccounts.value.forEach((e) => {
-      console.log(e.account);
-    console.log(e);
-      let account_address = e.pubkey.toBase58();
+        let account_address = e.pubkey.toBase58();
 
+        //   let accInfo = connection.getAccountInfo(account_address)
+        //     .then(function (value) {
+        //         console.log(value);
+        //     });
 
+        //console.log(splToken.AccountLayout.decode(e.account.data));
 
-    //   let accInfo = connection.getAccountInfo(account_address)
-    //     .then(function (value) {
-    //         console.log(value);
-    //     });
+        let accountInfo = splToken.AccountLayout.decode(e.account.data);
 
-    //console.log(splToken.AccountLayout.decode(e.account.data));
+        let tokenAddress = `${new solanaWeb3.PublicKey(accountInfo.mint)}`;
+        let tokenAmount =  `${accountInfo.amount}`;
+        let tokenDecimals = .000000001;
 
-    let accountInfo = splToken.AccountLayout.decode(e.account.data);
+        if(myTokenAddress == tokenAddress){
+            console.log('mm: ');
+            document.getElementById('token-amount').innerHTML = (tokenAmount*tokenDecimals);
+            document.getElementById('token-symbol').classList.remove('hidden');
+        }
 
-    let tokenAddress = `${new solanaWeb3.PublicKey(accountInfo.mint)}`;
-    let tokenAmount =  `${accountInfo.amount}`;
-
-
-
-console.log('mm: ');
-    console.log(tokenAddress);
 
     //console.log(`${new solanaWeb3.PublicKey(accountInfo.mint)}   ${accountInfo.amount}`);
 
@@ -109,8 +104,6 @@ try {
             window.solana.connect({onlyIfTrusted: true})
                 .then(({publicKey}) => {
                     connectAccountAnimation(publicKey.toString());
-                    console.log('the public key: ');
-                    console.log(publicKey.toString());
                     Livewire.emit('getSolWallet', publicKey.toString());
                 })
                 .catch(() => {
