@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/wallet/node_modules
 /storage/*.key
 /storage/solana/*.log
 /vendor
