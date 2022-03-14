@@ -31,7 +31,7 @@
                         {{-- If you are authenticated via Phantom wallet show this info --}}
                         <div id="wallet-authenticated" class="hidden bg-gray-50 dark:bg-gray-800 dark:border-gray-700 border border-gray-100 p-5 rounded-lg">
                             <div class="flex">
-                                <div class="w-20 h-20 rounded-full border-4 dark:border-gray-300 border-gray-600 p-2">
+                                <div class="w-20 h-20 rounded-full border-4 dark:border-gray-600 border-gray-300 p-2">
                                     <img src="{{ env('SOLANA_TOKEN_IMAGE') }}" class="w-full h-full">
                                 </div>
                                 <div class="flex flex-col pl-3 justify-center">

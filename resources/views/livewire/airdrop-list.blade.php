@@ -21,7 +21,7 @@
                                         </div>
                                         <div class="flex flex-col justify-start items-start flex-1">
                                            <div class="text-sm font-medium">Status:</div>
-                                           <div class="text-[0.6rem] px-2 py-1 leading-none flex items-center text-center rounded-full uppercase @if($airdrop->status == 'complete'){{ 'bg-green-400' }}@elseif($airdrop->status == 'processing'){{ 'bg-gray-500' }}@elseif($airdrop->status == 'failed'){{ 'bg-red-400' }}@endif text-white">{{ $airdrop->status }}</div>
+                                           <div class="text-[0.6rem] px-2 py-1 leading-none flex items-center text-center rounded-full uppercase @if($airdrop->status == 'completed'){{ 'bg-green-400' }}@elseif($airdrop->status == 'processing'){{ 'bg-gray-500' }}@elseif($airdrop->status == 'failed'){{ 'bg-red-400' }}@endif text-white">{{ $airdrop->status }}</div>
                                            
                                         </div>
                                     </div>
