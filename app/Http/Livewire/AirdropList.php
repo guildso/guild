@@ -59,6 +59,17 @@ class AirdropList extends Component
         }
     }
 
+    public function fetchTransactionInfo($id){
+        $path_to_file = storage_path('solana/airdrop-' . $id . '.log');
+        if(\File::exists( $path_to_file ) ){
+            $file = \File::get( $path_to_file );
+            $this->dispatchBrowserEvent('displayLogContent', ['content' => $file, 'id' => $id]);
+        } else {
+            $this->dispatchBrowserEvent('errorFetchingLogContent', ['message' => 'No log information found for this transaction', 'id' => $id]);
+        }
+            
+    }
+
     public function render()
     {
         $airdrops = Airdrop::where('team_id', auth()->user()->currentTeam->id)
