@@ -5,11 +5,11 @@
                 <div class="overflow-scroll border-b border-gray-200 dark:border-gray-700 border-gray-200 sm:rounded-lg">
 
 
-                    <div class="relative flex flex-col w-full border border-gray-200">
-                        <div class="w-full px-4 py-2 text-sm font-medium text-gray-600 bg-gray-200">Payouts</div>
+                    <div class="relative flex flex-col w-full border border-gray-200 dark:border-gray-800">
+                        <div class="w-full px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-900">Payouts</div>
                         @foreach($airdrops as $airdrop)
                             <div x-data="{ show:false }" class="flex flex-col w-full">
-                                <div @click="show=!show" wire:click="fetchTransactionInfo('{{ $airdrop->id }}')" class="relative cursor-pointer text-gray-600 hover:text-gray-700 flex px-4 justify-between items-center py-3 bg-gray-50 border-b border-gray-100 hover:bg-gray-100">
+                                <div @click="show=!show" wire:click="fetchTransactionInfo('{{ $airdrop->id }}')" class="relative cursor-pointer dark:text-gray-400 dark:hover:text-gray-300 text-gray-600 hover:text-gray-700 flex px-4 justify-between items-center py-3 bg-gray-50 border-b border-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-100">
                                     <div class="relative flex justify-between w-full">
                                         <div class="flex flex-col flex-1">
                                             <div class="font-medium text-sm">{{ $airdrop->created_at->format('F j, Y h:i A') }}</div>
