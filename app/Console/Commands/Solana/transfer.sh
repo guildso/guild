@@ -30,26 +30,26 @@ function transfer() {
 }
 
 ##
+# Set transfer to processing
+##
+function set_to_pending() {
+    mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET transaction='${transaction}', status='processing' WHERE id=${id}"
+}
+
+##
 # Transfer ID
 ##
 function transfer_id() {
-    count=0
-    while true; do
-        transaction=$(cat ${transfer_log} | grep "Signature" | tail -n 1 | awk '{print $2}')
-        sleep 2
-        # Check if the transaction is ready
-        if [[ ${transaction} ]]; then
-            break
-        fi
-        # Wait 10 minutes for the transfer to complete, else mark as failed
-        if [[ ${count} -gt 300 ]]; then
-            echo "Transfer failed" >> ${transfer_log}
-            mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET status='failed' WHERE id=${id}"
-            exit 1
-        fi
-    done
 
-    mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET transaction='${transaction}', status='completed' WHERE id=${id}"
+    transaction=$(cat ${transfer_log} | grep "Signature" | tail -n 1 | awk '{print $2}')
+    sleep 2
+    # Check if the transaction is ready
+    if [[ ${transaction} ]]; then
+        mysql -u ${DB_USERNAME} -p${DB_PASSWORD} ${DB_DATABASE} -e "UPDATE airdrops SET transaction='${transaction}', status='completed' WHERE id=${id}"
+    else
+        set_to_pending
+    fi
+    
 }
 
 ##
@@ -57,11 +57,6 @@ function transfer_id() {
 ##
 function main() {
     transfer
-    # Get the transaction ID
     transfer_id
-    # If the transfer was successful, then record the transfer ID
-    # if [ $? -eq 0 ]; then
-    #    transfer_id
-    # fi
 }
 main

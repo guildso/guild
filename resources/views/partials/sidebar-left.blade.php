@@ -33,7 +33,7 @@
                         📰 <span class="pl-2 text-sm">News</span>
                     </a>
 
-                    <a href="{{ route('guide') }}" class="@if(request()->routeIs('guide')){{ 'text-gray-600 dark:text-gray-100 dark:bg-gray-800 bg-gray-100' }}@else{{ 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400' }}@endif flex items-center w-full px-3 rounded-md py-1.5 text-base font-semibold">
+                    <a href="https://docs.guild.so" class="@if(request()->routeIs('guide')){{ 'text-gray-600 dark:text-gray-100 dark:bg-gray-800 bg-gray-100' }}@else{{ 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400' }}@endif flex items-center w-full px-3 rounded-md py-1.5 text-base font-semibold">
                         📖 <span class="pl-2 text-sm">Guide</span>
                     </a>
                 @endif
