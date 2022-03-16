@@ -1,3 +1,4 @@
 *
 !.gitignore
-!/profile-photos/**
+!profile-photos/**
+!profile-photos
