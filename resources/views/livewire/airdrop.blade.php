@@ -5,11 +5,11 @@
 
                 <div class="overflow-hidden sm:rounded-md">
                 
-                    <div wire:ignore class="px-1 pt-5">
+                    <div class="px-1 pt-5">
                         <h1 class="text-6xl mb-5 font-black text-gray-700 dark:text-white">Payouts</h1>
                         <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Connect your Phantom wallet and request a payout via your company solana token.</p>
                         
-                        <div id="wallet-loading-container" class="w-full h-64 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <div wire:ignore id="wallet-loading-container" class="w-full h-64 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
                             <div id="wallet-loading"  class="flex items-center text-gray-500 dark:text-gray-300 font-medium">
                                 <svg class="animate-spin -ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -29,8 +29,8 @@
                         </div>
 
                         {{-- If you are authenticated via Phantom wallet show this info --}}
-                        <div id="wallet-authenticated" class="hidden bg-gray-50 dark:bg-gray-800 dark:border-gray-700 border border-gray-100 p-5 rounded-lg">
-                            <div class="flex">
+                        <div wire:ignore.self id="wallet-authenticated" class="hidden bg-gray-50 dark:bg-gray-800 dark:border-gray-700 border border-gray-100 p-5 rounded-lg">
+                            <div wire:ignore class="flex">
                                 <div class="w-20 h-20 rounded-full border-4 dark:border-gray-600 border-gray-300 p-2">
                                     <img src="{{ env('SOLANA_TOKEN_IMAGE') }}" class="w-full h-full">
                                 </div>
@@ -42,11 +42,11 @@
                             <input type="hidden" id="token-address" value="{{ env('SOLANA_TOKEN_ADDRESS') }}">
                             
                             <p class="mt-3 mb-4 text-lg text-gray-700 dark:text-gray-400">Total earned points: <span class="font-black">{{ auth()->user()->getPoints() }}</span></p>
-                            <p class="mt-3 text-lg text-gray-700 dark:text-gray-400">Available payout: <span class="font-black">{{ auth()->user()->availablePayout() }}</span></p>
+                            <p class="mt-3 text-lg text-gray-700 dark:text-gray-400">Available payout: <span class="font-black" id="available-payout">{{ auth()->user()->availablePayout() }}</span></p>
 
                             
                             @if(auth()->user()->availablePayout() > 0)
-                                <div class="flex justify-content-center mt-5">
+                                <div id="request-button" class="flex justify-content-center mt-5">
                                     <button wire:loading.remove wire:target="request" wire:click="request" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-500 focus:shadow-outline-gray disabled:opacity-25">Convert My Points to {{ env('SOLANA_TOKEN_NAME') }}s</button>
                                 </div>
                             @endif
@@ -63,6 +63,12 @@
             @livewire('airdrop-list')
         </div>
     </div>
-    {{-- <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script> --}}
+    <script>
+        window.addEventListener('setAvailablePayoutToZero', event => {
+            document.getElementById('available-payout').innerText = '0';
+            document.getElementById('request-button').classList.add('hidden');
+        });
+        
+    </script>
     <script src="/wallet/dist/main.js"></script>
 </div>

@@ -66,6 +66,7 @@ class Airdrop extends Component
         $airdrop->save();
         $airdrop->user->save();
 
+        $this->dispatchBrowserEvent('setAvailablePayoutToZero', []);
         $this->dispatchBrowserEvent('notification', ['type' => 'success', 'message' => 'Your Payout has been Processed']);
         $this->emit('refreshAirdrops');
 

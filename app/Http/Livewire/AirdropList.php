@@ -15,6 +15,7 @@ class AirdropList extends Component
     ];
 
     public $numResults = 10;
+    public $showAirdropInfo = false;
 
     public function loadMore(){
         $this->numResults += 10;
@@ -59,6 +60,24 @@ class AirdropList extends Component
         }
     }
 
+    public function processAirdrop(Airdrop $airdrop){
+        $file = $this->getTransactionInfo($airdrop->id);
+
+        if($file) {
+            if(strpos($file, 'Signature:') !== false) {
+                $signature = substr($file, strpos($file, 'Signature:') + 10);
+                $airdrop->transaction = $signature;
+                $airdrop->status = 'completed';
+                $airdrop->save();
+                $this->dispatchBrowserEvent('updateTotalCrypto', ['amount' => $airdrop->amount]);
+            } else {
+                $airdrop->status = 'failed';
+                $airdrop->save();
+            }
+
+        }
+    }
+
     public function fetchTransactionInfo($id){
         $path_to_file = storage_path('solana/airdrop-' . $id . '.log');
         if(\File::exists( $path_to_file ) ){
@@ -67,6 +86,17 @@ class AirdropList extends Component
         } else {
             $this->dispatchBrowserEvent('errorFetchingLogContent', ['message' => 'No log information found for this transaction', 'id' => $id]);
         }
+            
+    }
+
+    public function getTransactionInfo($id){
+
+        $path_to_file = storage_path('solana/airdrop-' . $id . '.log');
+        if(\File::exists( $path_to_file ) ){
+            $file = \File::get( $path_to_file );
+            return $file;
+        }
+        return false;
             
     }
 

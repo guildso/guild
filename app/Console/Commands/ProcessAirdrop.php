@@ -47,7 +47,7 @@ class ProcessAirdrop extends Command
                 if(strpos($file, 'Signature:') !== false) {
                     $signature = substr($file, strpos($file, 'Signature:') + 10);
                     $airdrop->transaction = $signature;
-                    $airdrop->status = 'approved';
+                    $airdrop->status = 'completed';
                     $airdrop->save();
                 } else {
                     $airdrop->status = 'failed';
