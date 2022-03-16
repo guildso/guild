@@ -60,7 +60,7 @@
             </div>
         </div>
         <div>
-            @livewire('airdrop-list')
+            @livewire('airdrop-list',  key(Str::random(32)))
         </div>
     </div>
     <script>
