@@ -4,7 +4,7 @@
         class="flex flex-col justify-center h-full"
         x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Welcome to <span class="text-green-500">Guild</span></h1>
+            <h1 class="text-4xl text-gray-700 dark:text-gray-100 font-bold">Welcome to <span class="text-green-500">Guild</span></h1>
             <p class="text-lg text-gray-300">Let's configure a few things and get your guild setup. This will only take 30 seconds.</p>
             <div wire:click="nextStep" class="inline-flex items-center px-5 py-3 pl-8 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-green-500 border border-transparent rounded-md cursor-pointer hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green disabled:opacity-25"><span class="mr-2 -ml-4">🚀</span> Let's Do This</div>
         </div>
@@ -13,7 +13,7 @@
     <section x-show="step==1"
         class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">About Your <span class="text-green-500">Company</span></h1>
+            <h1 class="text-4xl text-gray-700 dark:text-gray-100 font-bold">About Your <span class="text-green-500">Company</span></h1>
             <p class="text-lg text-gray-300">First, enter a little information about your awesome company.</p>
 
 
@@ -40,7 +40,7 @@
         x-cloak>
 
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Create Your <span class="text-green-500">Account</span></h1>
+            <h1 class="text-4xl text-gray-700 dark:text-gray-100 font-bold">Create Your <span class="text-green-500">Account</span></h1>
             <p class="text-lg text-gray-300">Next, create your account. This will give you access to your guild dashboard.</p>
 
             <div class="w-full">
@@ -77,7 +77,7 @@
     <section x-show="step==3"
         class="flex flex-col justify-center h-full" x-cloak>
         <div  class="flex flex-col items-start mx-auto space-y-6 max-w-7xl">
-            <h1 class="text-4xl text-gray-100 font-bold">Finsh Your <span class="text-green-500">Setup</span></h1>
+            <h1 class="text-4xl text-gray-700 dark:text-gray-100 font-bold">Finsh Your <span class="text-green-500">Setup</span></h1>
             <p class="text-lg text-gray-300">Awesome 🙌, click on finish to complete the install and login to your dashboard.</p>
             <div class="flex space-x-4">
                 <div @click="step--" class="inline-flex items-center px-5 py-3 text-xs font-semibold tracking-widest text-gray-200 uppercase transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-600 border border-transparent rounded-md cursor-pointer">Previous</div>
