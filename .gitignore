@@ -14,4 +14,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-!storage/app/public/profile-photos/*
+!storage/app/public/profile-photos/**
+!storage/app/public/profile-photos

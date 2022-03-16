@@ -1,4 +1,4 @@
 *
 !public/
 !.gitignore
-!public/profile-photos
+!public/profile-photos/**
