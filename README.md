@@ -24,34 +24,11 @@ Guild.so is a simple dashboard of company announcements, team member availabilit
 
 ## 🔨 Installation
 
-Guild.so is based on Laravel 8 and Jetstream so you can run it just like a standard Laravel application. Here are 2 ways of running Guild.so:
+Guild.so is based on Laravel 8 and Jetstream so you can run it just like a standard Laravel application. Here is how you can run Guild.so:
 
-## 💙 Running on DigitalOcean App Platform
+- [Installation documentation](https://docs.guild.so/installation)
 
-We utilize the ["Deploy to DigitalOcean" Button](https://www.digitalocean.com/docs/app-platform/how-to/add-deploy-do-button) to deploy to the App Platform:
-
-[![Deploy to DO](https://mp-assets1.sfo2.digitaloceanspaces.com/deploy-to-do/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/thedevdojo/guild/tree/main&refcode=dc19b9819d06)
-
-> **NOTE: This repository contains a pre-generated application key stored in the `.do/deploy.template.yaml` YAML file. During the deployment make sure to generate a new App Key and use it instead of the dummy value!**
-
-### ☁ DigitalOcean Spaces
-
-You can utilize the DigitalOcean Spaces to store your static file uploads like profile pictures and etc.
-
-In order to use Spaces make sure to add the following ENV variables:
-
-```
-DO_SPACES=true
-DO_SPACES_KEY=YOUR_DO_SPACES_KEY
-DO_SPACES_SECRET=YOUR_DO_SPACES_SECRET
-DO_SPACES_ENDPOINT=YOUR_DO_SPACES_ENDPOINT
-DO_SPACES_REGION=YOUR_DO_SPACES_REGION
-DO_SPACES_BUCKET=YOUR_DO_SPACES_BUCKET
-```
-
-That way if you deploy to the DigitalOcean App platform, your uplodas will be stored to a persistant volume so you won't loose then during the next deploy.
-
-## ✊ Manual Installation
+### ✊ Manual Installation
 
 You can use the LaraSail script to get your Linux server ready for Laravel 8:
 
@@ -96,7 +73,7 @@ npm install && npm run dev
 php artisan migrate
 ```
 
-## 🧙‍♂️ Events and Queues (Optional)
+### 🧙‍♂️ Events and Queues (Optional)
 
 By default Guild.so uses Laravel Events for the Slack and Discord Notifications.
 
